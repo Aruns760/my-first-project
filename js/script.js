@@ -11,12 +11,13 @@ header.addEventListener('click', () => {
 document.querySelector('footer').innerHTML += ` 
   <p>© ${new Date().getFullYear()} - Arun</p>`;
 
-const toggle = document.getElementById("darkModeToggle");
+// Add version number to force update
+const version = "1.0.2"; // ← Change this number after edits
 
-toggle.addEventListener("click", () => {
+document.getElementById("darkModeToggle").addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
-  
   // Update button text
+  const toggle = document.getElementById("darkModeToggle");
   toggle.textContent = document.body.classList.contains("dark-mode") 
     ? "☀️ Light Mode" 
     : "🌙 Dark Mode";
