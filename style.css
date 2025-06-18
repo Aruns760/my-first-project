@@ -29,3 +29,28 @@ footer {
   margin-top: 3rem;
   color: #64748b;
 }
+
+/* Night Mode */
+#darkModeToggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #2c3e50;
+  color: white;
+}
+.dark-mode {
+  background: #1a1a1a;
+  color: #f0f0f0;
+}
+
+.dark-mode h1 {
+  color: #4fc3f7;
+}
+
+.dark-mode footer {
+  color: #b3b3b3;
+}
