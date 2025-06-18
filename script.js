@@ -6,11 +6,11 @@ header.addEventListener('click', () => {
     header.style.color = '#2563eb'; // Revert after 1 sec
   }, 1000);
 });
-
 // Current year in footer
 document.querySelector('footer').innerHTML += ` 
   <p>© ${new Date().getFullYear()} - Arun</p>`;
 
+// dark and day mode toggle
 const toggle = document.getElementById("darkModeToggle");
 
 toggle.addEventListener("click", () => {
