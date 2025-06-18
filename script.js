@@ -11,11 +11,6 @@ header.addEventListener('click', () => {
 document.querySelector('footer').innerHTML += ` 
   <p>© ${new Date().getFullYear()} - Arun</p>`;
 
-// Random query string to bypass cache
-document.getElementById("darkModeToggle").addEventListener("click", () => {
-  console.log("Button clicked!"); // Debug
-  document.body.classList.toggle("dark-mode");
-});
 const toggle = document.getElementById("darkModeToggle");
 
 toggle.addEventListener("click", () => {
