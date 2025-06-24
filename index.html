@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arun's Developer Portfolio</title>
-    <link rel="stylesheet" href="style.css?v=1.1">
-    <link rel="icon" href="favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=1.2"> <!-- Updated cache-buster -->
+    <link rel="icon" href="favicon.ico"> <!-- Optional favicon -->
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -16,61 +15,69 @@
         <a href="#contact">Contact</a>
     </nav>
 
-    <!-- Dark Mode Toggle Button -->
+    <!-- Dark Mode Toggle -->
     <button id="darkModeToggle">🌙 Dark Mode</button>
 
-    <header>
-        <h1>Hello Everyone, I'm Arun</h1>
-        <p>My Goal is to Become A Fullstack Developer</p>
-    </header>
-
+    <!-- Main Content -->
     <main>
+        <header id="home">
+            <h1>Hello Everyone, I'm Arun</h1>
+            <p class="subtitle">Aspiring Full-Stack Developer</p>
+        </header>
+
         <section id="about">
             <h2>About Me</h2>
-            <p>I have learned Git and GitHub, and I'm building my portfolio!</p>
-        </section>
-        
-        <section class="projects">
-        <h2>My Projects</h2>
-        <div class="project-grid">
-            <!-- Project 1 -->
-            <div class="project-card">
-            <h3>Todo App</h3>
-            <p>Built with HTML/CSS/JavaScript</p>
-            <div class="links">
-                <a href="#" class="demo-btn">Live Demo</a>
-                <a href="#" class="code-btn">View Code</a>
-            </div>
-            </div>
+            <p>I have learned Git and GitHub, and I'm building my portfolio to become a professional developer!</p>
             
-            <!-- Project 2 (Add your own!) -->
-            <div class="project-card">
-            <h3>Portfolio Website</h3>
-            <p>Built with HTML/CSS</p>
-            <div class="links">
-                <a href="#" class="demo-btn">Live Demo</a>
-                <a href="https://github.com/Aruns760/my-first-project" class="code-btn">View Code</a>
+            <div class="skills">
+                <span class="badge">HTML</span>
+                <span class="badge">CSS</span>
+                <span class="badge">JavaScript</span>
+                <span class="badge">Git</span>
             </div>
-            </div>
-        </div>
         </section>
-        <form class="contact-form">
-        <input type="text" placeholder="Name" required>
-        <input type="email" placeholder="Email" required>
-        <textarea placeholder="Message"></textarea>
-        <button type="submit">Send</button>
-        </form>
-        <!-- About Section -->
-        <div class="skills">
-        <span class="badge">HTML</span>
-        <span class="badge">CSS</span>
-        <span class="badge">JavaScript</span>
-        </div>
+
+        <!-- Project Gallery -->
+        <section id="projects" class="projects">
+            <h2>My Projects</h2>
+            <div class="project-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <h3>Todo App</h3>
+                    <p>Built with HTML/CSS/JavaScript</p>
+                    <div class="links">
+                        <a href="#" class="demo-btn">Live Demo</a>
+                        <a href="#" class="code-btn">View Code</a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <h3>Portfolio Website</h3>
+                    <p>Built with HTML/CSS</p>
+                    <div class="links">
+                        <a href="https://aruns760.github.io/my-first-project/" class="demo-btn">Live Demo</a>
+                        <a href="https://github.com/Aruns760/my-first-project" class="code-btn">View Code</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form (Basic) -->
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message"></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
     </main>
 
     <!-- Footer -->
     <footer>
-        <p>© 2025 Arun - Learning Journey</p>
+        <p>© <span id="year"></span> Arun - Learning Journey</p>
     </footer>
 
     <!-- JavaScript -->
