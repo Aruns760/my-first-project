@@ -12,9 +12,14 @@ document.querySelector('footer').innerHTML += `
 
 // Dark Mode Toggle
 const toggle = document.getElementById("darkModeToggle");
+
 toggle.addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
+  
+  // Update button text
   toggle.textContent = document.body.classList.contains("dark-mode") 
     ? "☀️ Light Mode" 
     : "🌙 Dark Mode";
+  
+  console.log("Dark mode toggled!"); // Debug
 });
