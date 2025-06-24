@@ -11,6 +11,7 @@ body {
   margin: 0 auto;
   padding: 2rem;
   color: var(--dark);
+   transition: background 0.5s ease, color 0.5s ease;
 }
 
 header {
@@ -53,4 +54,35 @@ footer {
 
 .dark-mode footer {
   color: #b3b3b3;
+}
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+  background: var(--primary); /* Uses your dark mode color! */
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.navbar a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.dark-mode .navbar {
+  background: #1a1a1a;
+  border-bottom: 1px solid #333;
+}
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
 }
