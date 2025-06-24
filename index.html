@@ -66,19 +66,29 @@
         <!-- Contact Form (Basic) -->
         <section id="contact">
             <h2>Get In Touch</h2>
-            <form class="contact-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message"></textarea>
+                <form id="contactForm" action="https://formspree.io/f/mzzgjlzz" method="POST">
+                <!-- Honeypot Field (anti-spam) -->
+                <input type="text" name="_gotcha" style="display:none">
+                
+                <!-- Visible Fields -->
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="_replyto" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                
+                <!-- Hidden Fields for Better Emails -->
+                <input type="hidden" name="_subject" value="New message from your portfolio!">
+                <input type="hidden" name="_format" value="plain">
+                
+                <!-- Submit Button -->
                 <button type="submit">Send Message</button>
-            </form>
+                </form>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer>
+        <footer>
         <p>© <span id="year"></span> Arun - Learning Journey</p>
-    </footer>
+        </footer>
 
     <!-- JavaScript -->
     <script src="js/script.js"></script>
