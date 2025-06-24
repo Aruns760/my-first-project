@@ -1,66 +1,75 @@
-/* Modern Styling */
+/* ===== CSS Variables ===== */
 :root {
-  --primary: #2563eb;  /* Blue */
-  --dark: #1e293b;     /* Dark gray */
+  --primary: #2563eb;       /* Blue */
+  --primary-dark: #1e40af;  /* Darker blue */
+  --dark: #1e293b;          /* Dark gray */
+  --light: #f8fafc;         /* Off-white */
+  --gray: #64748b;          /* Medium gray */
+}
+
+/* ===== Base Styles ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
   color: var(--dark);
-   transition: background 0.5s ease, color 0.5s ease;
+  background: var(--light);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-header {
-  text-align: center;
-  margin-bottom: 3rem;
+/* ===== Typography ===== */
+h1, h2, h3 {
+  line-height: 1.2;
 }
 
 h1 {
+  font-size: 2.5rem;
   color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: 2rem 0 1rem;
   border-bottom: 2px solid var(--primary);
   padding-bottom: 0.5rem;
+  display: inline-block;
 }
 
-footer {
-  text-align: center;
-  margin-top: 3rem;
-  color: #64748b;
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
-/* Night Mode */
-#darkModeToggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  background: #2c3e50;
-  color: white;
-}
-.dark-mode {
-  background: #1a1a1a;
-  color: #f0f0f0;
+p {
+  margin-bottom: 1rem;
 }
 
-.dark-mode h1 {
-  color: #4fc3f7;
+.subtitle {
+  color: var(--gray);
+  font-size: 1.2rem;
 }
 
-.dark-mode footer {
-  color: #b3b3b3;
-}
+/* ===== Navigation ===== */
 .navbar {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  padding: 1rem;
-  background: var(--primary); /* Uses your dark mode color! */
+  padding: 1.5rem;
+  background: var(--primary);
+  margin: -20px -20px 20px -20px;
 }
 
 .navbar a {
@@ -75,42 +84,50 @@ footer {
 .navbar a:hover {
   background: rgba(255, 255, 255, 0.2);
 }
-.dark-mode .navbar {
-  background: #1a1a1a;
-  border-bottom: 1px solid #333;
+
+/* ===== Dark Mode Toggle ===== */
+#darkModeToggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background: var(--dark);
+  color: white;
+  z-index: 100;
 }
-@media (max-width: 600px) {
-  .navbar {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-  }
+
+/* ===== Project Gallery ===== */
+.projects {
+  margin: 3rem 0;
 }
-html { scroll-behavior: smooth; }
-/* Project Grid */
+
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  padding: 2rem 0;
+  margin-top: 1.5rem;
 }
 
 .project-card {
   background: white;
   border-radius: 8px;
   padding: 1.5rem;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
 .links {
   display: flex;
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .demo-btn, .code-btn {
@@ -118,6 +135,7 @@ html { scroll-behavior: smooth; }
   border-radius: 4px;
   text-decoration: none;
   font-weight: 500;
+  transition: all 0.2s ease;
 }
 
 .demo-btn {
@@ -125,13 +143,131 @@ html { scroll-behavior: smooth; }
   color: white;
 }
 
+.demo-btn:hover {
+  background: var(--primary-dark);
+}
+
 .code-btn {
   border: 2px solid var(--primary);
   color: var(--primary);
 }
 
-/* Dark Mode Support */
+.code-btn:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* ===== Skills Badges ===== */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.badge {
+  background: var(--primary);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+/* ===== Contact Form ===== */
+.contact-form {
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.contact-form textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.contact-form button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: var(--primary-dark);
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  color: var(--gray);
+  border-top: 1px solid #eee;
+}
+
+/* ===== Dark Mode Styles ===== */
+.dark-mode {
+  background: #1a1a1a;
+  color: #f0f0f0;
+}
+
+.dark-mode .navbar {
+  background: #111;
+  border-bottom: 1px solid #333;
+}
+
 .dark-mode .project-card {
   background: #2d3748;
   color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .contact-form input,
+.dark-mode .contact-form textarea {
+  background: #2d3748;
+  color: white;
+  border-color: #4a5568;
+}
+
+.dark-mode footer {
+  border-color: #333;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #darkModeToggle {
+    top: 10px;
+    right: 10px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
 }
