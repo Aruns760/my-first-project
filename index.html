@@ -62,25 +62,70 @@
                 </div>
             </div>
         </section>
-
-        <!-- Contact Form (Basic) -->
-        <section id="contact">
-            <h2>Get In Touch</h2>
-            <form id="contactForm" action="https://formspree.io/f/mzzgjlzz" method="POST">
-            <!-- Honeypot -->
-            <input type="text" name="_gotcha" style="display:none">
+                
+                <!-- ===== Contact Form ===== -->
+        <section id="contact" class="contact-section">
+        <h2>Get In Touch</h2>
+        
+        <form 
+            id="contactForm" 
+            action="https://formspree.io/f/mzzgjlzz" 
+            method="POST"
+        >
+            <!-- Anti-Spam Honeypot -->
+            <input type="checkbox" name="_honeypot" style="display:none" tabindex="-1">
             
             <!-- Visible Fields -->
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="_replyto" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" required></textarea>
+            <div class="form-group">
+            <label for="name">Your Name</label>
+            <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                placeholder="Dhoni MS" 
+                required
+            >
+            </div>
+            
+            <div class="form-group">
+            <label for="email">Email</label>
+            <input 
+                type="email" 
+                id="email" 
+                name="_replyto" 
+                placeholder="Dhoni07@email.com" 
+                required
+            >
+            </div>
+            
+            <div class="form-group">
+            <label for="message">Message</label>
+            <textarea 
+                id="message" 
+                name="message" 
+                placeholder="Hello Arun, I'd like to chat about..." 
+                required
+            ></textarea>
+            </div>
             
             <!-- Hidden Fields -->
-            <input type="hidden" name="_subject" value="New message from your portfolio!">
-            <input type="hidden" name="_autoreply" value="Hi %name%, thanks for your message! I'll reply soon.">
+            <input type="hidden" name="_subject" value="New message from your portfolio">
+            <input type="hidden" name="_language" value="en">
+            <input 
+            type="hidden" 
+            name="_autoreply" 
+            value="Hi! Thanks for contacting me. I'll reply within 24 hours. For urgent matters, email me directly at arungnc07@gmail.com"
+            >
             
-            <button type="submit">Send Message</button>
-            </form>
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn">
+            <span class="btn-text">Send Message</span>
+            <span class="spinner"></span>
+            </button>
+            
+            <!-- Form Status -->
+            <div id="form-status" class="form-status"></div>
+        </form>
         </section>
     </main>
 
