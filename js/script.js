@@ -1,6 +1,5 @@
 // ===== DOM Elements =====
 const darkModeToggle = document.getElementById('darkModeToggle');
-const contactForm = document.querySelector('.contact-form');
 const yearElement = document.getElementById('year');
 const projectCards = document.querySelectorAll('.project-card');
 
@@ -144,3 +143,65 @@ document.addEventListener('colorSchemeChange', (e) => {
   // Handle other dark-mode dependent components
   console.log('Color scheme changed to:', e.detail.isDarkMode ? 'Dark' : 'Light');
 });
+
+
+// Contact Form Handling
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('form-status');
+const submitBtn = contactForm.querySelector('.submit-btn');
+const btnText = submitBtn.querySelector('.btn-text');
+const spinner = submitBtn.querySelector('.spinner');
+
+contactForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  // UI Loading State
+  btnText.textContent = 'Sending...';
+  spinner.style.display = 'block';
+  submitBtn.disabled = true;
+
+  try {
+    // Send to Formspree
+    const response = await fetch(contactForm.action, {
+      method: 'POST',
+      body: new FormData(contactForm),
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    // Handle Response
+    if (!response.ok) {
+      throw new Error(await response.text());
+    }
+
+    // Success
+    contactForm.reset();
+    showStatus('✅ Message sent! (Check your email for confirmation)', 'success');
+    
+  } catch (error) {
+    console.error('Form error:', error);
+    showStatus('❌ Failed to send. Please email me directly at arun@example.com', 'error');
+    
+  } finally {
+    // Reset UI
+    btnText.textContent = 'Send Message';
+    spinner.style.display = 'none';
+    submitBtn.disabled = false;
+  }
+});
+
+function showStatus(message, type) {
+  formStatus.textContent = message;
+  formStatus.className = `form-status ${type}`;
+  
+  // Auto-hide after 5 seconds
+  setTimeout(() => {
+    formStatus.style.opacity = '0';
+    setTimeout(() => {
+      formStatus.textContent = '';
+      formStatus.className = 'form-status';
+      formStatus.style.opacity = '1';
+    }, 300);
+  }, 5000);
+}

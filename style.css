@@ -173,7 +173,21 @@ p {
   font-size: 0.9rem;
 }
 
-/* ===== Contact Form ===== */
+/* ===== Contact Form Styles ===== */
+.contact-section {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.dark-mode .contact-section {
+  background: #2d3748;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
 .contact-form {
   max-width: 600px;
   margin: 2rem auto;
@@ -273,15 +287,19 @@ footer {
 }
 
 /* Loading Spinner */
+
 .spinner {
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  border: 2px solid rgba(255,255,255,0.3);
+  display: none;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255,255,255,0.3);
   border-radius: 50%;
   border-top-color: white;
   animation: spin 1s ease-in-out infinite;
-  margin-right: 8px;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 @keyframes spin {
@@ -289,32 +307,36 @@ footer {
 }
 
 /* Form Alerts */
-.form-alert {
-  padding: 12px;
-  margin: 1rem 0;
+
+.form-status {
+  margin-top: 1rem;
+  padding: 1rem;
   border-radius: 4px;
-  font-weight: 500;
+  display: none;
 }
 
-.form-alert.success {
+.form-status.success {
   background: #dcfce7;
   color: #166534;
+  display: block;
 }
 
-.form-alert.error {
+.form-status.error {
   background: #fee2e2;
   color: #b91c1c;
+  display: block;
 }
 
-.dark-mode .form-alert.success {
+.dark-mode .form-status.success {
   background: #14532d;
   color: #bbf7d0;
 }
 
-.dark-mode .form-alert.error {
+.dark-mode .form-status.error {
   background: #7f1d1d;
   color: #fecaca;
 }
+
 /* ===== Contact Form Styles ===== */
 .contact-section {
   max-width: 600px;
@@ -388,50 +410,4 @@ footer {
   background: var(--primary-dark);
 }
 
-.spinner {
-  display: none;
-  width: 20px;
-  height: 20px;
-  border: 3px solid rgba(255,255,255,0.3);
-  border-radius: 50%;
-  border-top-color: white;
-  animation: spin 1s ease-in-out infinite;
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-.form-status {
-  margin-top: 1rem;
-  padding: 1rem;
-  border-radius: 4px;
-  display: none;
-}
-
-.form-status.success {
-  background: #dcfce7;
-  color: #166534;
-  display: block;
-}
-
-.form-status.error {
-  background: #fee2e2;
-  color: #b91c1c;
-  display: block;
-}
-
-.dark-mode .form-status.success {
-  background: #14532d;
-  color: #bbf7d0;
-}
-
-.dark-mode .form-status.error {
-  background: #7f1d1d;
-  color: #fecaca;
-}
-  
+/* ===== Overed contact ===== */
