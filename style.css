@@ -447,3 +447,46 @@ footer {
 }
 
 /* Button styles match your existing portfolio */
+/* Project Card */
+.project-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.project-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.tech-tags {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.tech-tags span {
+  background: #e2e8f0;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+/* Dark Mode Support */
+.dark-mode .project-card {
+  background: #2d3748;
+}
+
+.dark-mode .tech-tags span {
+  background: #4a5568;
+  color: white;
+}
