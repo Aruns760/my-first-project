@@ -1,0 +1,21 @@
+name: Update Portfolio Data
+on:
+  schedule:
+    - cron: '0 12 * * *' # Runs daily at 12PM UTC
+  workflow_dispatch: # Manual trigger option
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Update GitHub Stats
+        run: |
+          # Add any auto-update scripts here
+          echo "Portfolio updated $(date)" >> update.log
+      - name: Commit Changes
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git add .
+          git commit -m "Auto-update portfolio data" || echo "No changes"
+          git push

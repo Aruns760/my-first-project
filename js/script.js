@@ -204,34 +204,99 @@ function showStatus(message, type) {
     }, 300);
   }, 5000);
 }
-// Project Filtering
-const filterButtons = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.project-card');
+// Project Filtering System
+// Project Filtering System with GSAP Animation
+document.addEventListener('DOMContentLoaded', () => {
+  // DOM Elements
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+  const totalCount = document.getElementById('totalCount');
+  const visibleCount = document.getElementById('visibleCount');
 
-filterButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    // Update active button
-    filterButtons.forEach(btn => btn.classList.remove('active'));
-    button.classList.add('active');
-    
-    // Filter projects
-    const filter = button.dataset.filter;
-    projectCards.forEach(card => {
-      card.style.display = (filter === 'all' || card.dataset.category === filter) 
-        ? 'block' 
-        : 'none';
+  // Initialize
+  totalCount.textContent = projectCards.length;
+  const savedFilter = localStorage.getItem('projectFilter') || 'all';
+  filterProjects(savedFilter, false); // No animation on initial load
+  highlightActiveButton(savedFilter);
+
+  // Event Listeners
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const filter = button.dataset.filter;
+      filterProjects(filter, true); // Enable animation on click
+      highlightActiveButton(filter);
+      localStorage.setItem('projectFilter', filter);
     });
-    
-    // Optional: Animation
-    animateProjects();
   });
-});
 
-function animateProjects() {
-  gsap.from('.project-card', {
-    opacity: 0,
-    y: 20,
-    duration: 0.5,
-    stagger: 0.1
-  });
+  // Core Filtering Function
+  function filterProjects(filter, shouldAnimate) {
+    let visibleCards = [];
+    let visible = 0;
+
+    projectCards.forEach(card => {
+      const show = filter === 'all' || card.dataset.category.includes(filter);
+      card.style.display = show ? 'block' : 'none';
+      
+      if (show) {
+        visible++;
+        if (shouldAnimate) visibleCards.push(card);
+      }
+    });
+
+    visibleCount.textContent = visible;
+    
+    // Animate only if requested and cards are visible
+    if (shouldAnimate && visibleCards.length > 0) {
+      animateProjects(visibleCards);
+    }
+  }
+
+  // GSAP Animation
+  function animateProjects(cards) {
+    gsap.from(cards, {
+      opacity: 0,
+      y: 20,
+      duration: 0.5,
+      stagger: 0.1,
+      ease: "power2.out",
+      onStart: () => {
+        cards.forEach(card => card.classList.add('animating'));
+      },
+      onComplete: () => {
+        cards.forEach(card => card.classList.remove('animating'));
+      }
+    });
+  }
+
+  // UI Helper
+  function highlightActiveButton(filter) {
+    filterButtons.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.filter === filter);
+    });
+  }
+});
+// Fetch GitHub Repos
+async function fetchGitHubRepos() {
+  try {
+    const response = await fetch('https://api.github.com/users/Aruns760/repos?sort=updated&per_page=4');
+    const repos = await response.json();
+    
+    const reposList = document.getElementById('github-repos-list');
+    reposList.innerHTML = repos.map(repo => `
+      <div class="github-repo-card">
+        <h4><a href="${repo.html_url}" target="_blank">${repo.name}</a></h4>
+        <p>${repo.description || 'No description'}</p>
+        <div class="repo-meta">
+          <span>★ ${repo.stargazers_count}</span>
+          <span>${repo.language || 'Code'}</span>
+        </div>
+      </div>
+    `).join('');
+  } catch (error) {
+    console.error('GitHub API error:', error);
+  }
 }
+
+// Call on page load
+document.addEventListener('DOMContentLoaded', fetchGitHubRepos);
