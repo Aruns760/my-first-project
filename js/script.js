@@ -1,7 +1,6 @@
 // ===== DOM Elements =====
 const darkModeToggle = document.getElementById('darkModeToggle');
 const yearElement = document.getElementById('year');
-const projectCards = document.querySelectorAll('.project-card');
 
 // ===== Initialize Page =====
 document.addEventListener('DOMContentLoaded', () => {
@@ -204,4 +203,35 @@ function showStatus(message, type) {
       formStatus.style.opacity = '1';
     }, 300);
   }, 5000);
+}
+// Project Filtering
+const filterButtons = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
+
+filterButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    // Update active button
+    filterButtons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+    
+    // Filter projects
+    const filter = button.dataset.filter;
+    projectCards.forEach(card => {
+      card.style.display = (filter === 'all' || card.dataset.category === filter) 
+        ? 'block' 
+        : 'none';
+    });
+    
+    // Optional: Animation
+    animateProjects();
+  });
+});
+
+function animateProjects() {
+  gsap.from('.project-card', {
+    opacity: 0,
+    y: 20,
+    duration: 0.5,
+    stagger: 0.1
+  });
 }
