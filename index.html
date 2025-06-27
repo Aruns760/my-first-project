@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css?v=1.2"> <!-- Updated cache-buster -->
     <link rel="icon" href="favicon.ico"> <!-- Optional favicon -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -37,11 +38,12 @@
                 <span class="badge">Git</span>
             </div>
         </section>
-
         <!-- Project Gallery -->
             <section id="projects" class="projects">
             <h2>My Projects</h2>
-            
+            <div class="project-counter">
+                Showing <span id="visibleCount">0</span> of <span id="totalCount">0</span> projects
+                </div>
             <!-- Filter Buttons -->
             <div class="project-filters">
                 <button class="filter-btn active" data-filter="all">All</button>
@@ -52,7 +54,7 @@
             <!-- Project Grid -->
             <div class="project-grid">
                 <!-- Todo App (Web) -->
-                <div class="project-card" data-category="web">
+                <div class="project-card" data-category="web apps">
                 <img src="https://raw.githubusercontent.com/Aruns760/todo-app/main/screenshot.png" 
                     alt="Todo App Preview" 
                     class="project-image">
@@ -72,7 +74,7 @@
                 </div>
 
                 <!-- Portfolio Website (Web) -->
-                <div class="project-card" data-category="web">
+                <div class="project-card" data-category="web fullstack">
                 <img src="https://via.placeholder.com/800x600?text=Portfolio+Screenshot" 
                     alt="Portfolio Preview" 
                     class="project-image">
@@ -90,7 +92,21 @@
                     </div>
                 </div>
                 </div>
+
+                <div class="project-card" data-category="web">
+                    <img src="https://raw.githubusercontent.com/your-username/repo-name/main/todo-screenshot.png" 
+                        alt="Todo App Preview">
+                    <div class="project-details">
+                        <h3>Todo App</h3>
+                        <p>Task manager with local storage</p>
+                        <div class="project-links">
+                        <a href="https://your-username.github.io/todo-app/" target="_blank" class="demo-btn">Live Demo</a>
+                        <a href="https://github.com/your-username/todo-app" target="_blank" class="code-btn">Code</a>
+                        </div>
+                    </div>
+                    </div>
             </div>
+            
             </section>
                 
                 <!-- ===== Contact Form ===== -->
@@ -162,6 +178,18 @@
     <!-- Footer -->
         <footer>
         <p>© <span id="year"></span> Arun - Learning Journey</p>
+        <!-- GitHub Activity Section -->
+        <section class="github-activity">
+        <h2>My Coding Activity</h2>
+        <div class="github-stats">
+            <!-- Replace with your username -->
+            <img src="https://ghchart.rshah.org/Aruns760" alt="Arun's GitHub Activity">
+            <div class="github-repos">
+            <h3>Recent Projects</h3>
+            <div id="github-repos-list"></div>
+            </div>
+        </div>
+        </section>
         </footer>
 
     <!-- JavaScript -->
