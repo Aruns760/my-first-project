@@ -6,6 +6,7 @@
     <title>Arun's Developer Portfolio</title>
     <link rel="stylesheet" href="style.css?v=1.2"> <!-- Updated cache-buster -->
     <link rel="icon" href="favicon.ico"> <!-- Optional favicon -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -38,41 +39,59 @@
         </section>
 
         <!-- Project Gallery -->
-        <section id="projects" class="projects">
+            <section id="projects" class="projects">
             <h2>My Projects</h2>
+            
+            <!-- Filter Buttons -->
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="apps">Apps</button>
+            </div>
+
+            <!-- Project Grid -->
             <div class="project-grid">
-                <!-- Project 1 -->
-                <!-- Inside your projects section -->
-            <div class="project-card" data-category="javascript">
-            <img src="https://raw.githubusercontent.com/Aruns760/todo-app/main/screenshot.png" 
-                alt="Todo App Preview" 
-                class="project-image">
-            <div class="project-details">
-                <h3>Todo App</h3>
-                <p>Interactive task manager with local storage persistence</p>
-                <div class="tech-tags">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-                </div>
-                <div class="project-links">
-                <a href="https://aruns760.github.io/todo-app/" target="_blank" class="demo-btn">Live Demo</a>
-                <a href="https://github.com/Aruns760/todo-app" target="_blank" class="code-btn">Source Code</a>
-                </div>
-            </div>
-            </div>
-                
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <h3>Portfolio Website</h3>
-                    <p>Built with HTML/CSS</p>
-                    <div class="links">
-                        <a href="https://aruns760.github.io/my-first-project/" class="demo-btn">Live Demo</a>
-                        <a href="https://github.com/Aruns760/my-first-project" class="code-btn">View Code</a>
+                <!-- Todo App (Web) -->
+                <div class="project-card" data-category="web">
+                <img src="https://raw.githubusercontent.com/Aruns760/todo-app/main/screenshot.png" 
+                    alt="Todo App Preview" 
+                    class="project-image">
+                <div class="project-details">
+                    <h3>Todo App</h3>
+                    <p>Interactive task manager with local storage persistence</p>
+                    <div class="tech-tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                    <a href="https://aruns760.github.io/todo-app/" target="_blank" class="demo-btn">Live Demo</a>
+                    <a href="https://github.com/Aruns760/todo-app" target="_blank" class="code-btn">Source Code</a>
                     </div>
                 </div>
+                </div>
+
+                <!-- Portfolio Website (Web) -->
+                <div class="project-card" data-category="web">
+                <img src="https://via.placeholder.com/800x600?text=Portfolio+Screenshot" 
+                    alt="Portfolio Preview" 
+                    class="project-image">
+                <div class="project-details">
+                    <h3>Portfolio Website</h3>
+                    <p>Responsive personal portfolio with dark mode</p>
+                    <div class="tech-tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                    <a href="https://aruns760.github.io/my-first-project/" target="_blank" class="demo-btn">Live Demo</a>
+                    <a href="https://github.com/Aruns760/my-first-project" target="_blank" class="code-btn">Source Code</a>
+                    </div>
+                </div>
+                </div>
             </div>
-        </section>
+            </section>
                 
                 <!-- ===== Contact Form ===== -->
         <section id="contact" class="contact-section">
